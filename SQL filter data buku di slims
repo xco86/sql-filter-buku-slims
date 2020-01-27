@@ -5,4 +5,4 @@ SELECT b.biblio_id, b.title, s.author, s.publisher, s.publish_place, s.publish_y
 
 Perintah SQL command untuk memfilter data buku complete
 =======================================================
-SELECT b.biblio_id, b.title, s.author, s.publisher, s.publish_place, s.publish_year, b.collation, b.spec_detail_info, b.isbn_issn, count( i.item_id ) AS jml_eksemplar FROM biblio b LEFT JOIN search_biblio s ON b.biblio_id=s.biblio_id LEFT JOIN item i ON b.biblio_id = i.biblio_id GROUP BY b.biblio_id order by b.publish_year, b.title ASC
+SELECT b.biblio_id, b.title, s.author, s.publisher, s.publish_place, s.publish_year, b.call_number, b.collation, b.spec_detail_info, b.isbn_issn, count( i.item_id ) AS jml_eksemplar FROM biblio b LEFT JOIN search_biblio s ON b.biblio_id=s.biblio_id LEFT JOIN item i ON b.biblio_id = i.biblio_id GROUP BY b.biblio_id order by b.publish_year, b.title ASC
