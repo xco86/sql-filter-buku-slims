@@ -13,3 +13,11 @@ SELECT b.biblio_id, b.title, i.source, s.author, s.publisher, s.publish_place, s
        b.call_number, b.classification, b.collation, b.input_date, b.spec_detail_info, b.isbn_issn,
        count( i.item_id ) AS jml_eksemplar FROM biblio b LEFT JOIN search_biblio s ON b.biblio_id=s.biblio_id
        LEFT JOIN item i ON b.biblio_id = i.biblio_id GROUP BY b.biblio_id order by b.publish_year, b.title ASC
+
+
+Filter Pengunjung Yang Aktif
+===============================
+SELECT l.member_id, m.member_name, member_phone, m.prodi, COUNT(loan_id) 
+FROM loan AS l INNER JOIN member AS m ON m.member_id = l.member_id 
+WHERE LEFT(loan_date,4) = '2017' AND m.expire_date > NOW() GROUP BY l.member_id ORDER BY COUNT(loan_id) DESC LIMIT 10 
+
